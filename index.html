@@ -1,157 +1,318 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHOP PHONE</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Font-awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Favicon -->
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap" rel="stylesheet" />
 
-    <!-- Glidejs Carouse -->
-    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css">
+  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <!-- Carousel -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.min.css
+">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.theme.min.css">
-    <!-- Animate On Scroll -->
-
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- Custom StyleSheet -->
-    <link rel="stylesheet" href="style.css" />
+  <!-- Custom StyleSheet -->
+  <link rel="stylesheet" href="styles.css" />
+<!-- font awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" media="all">
+  <title>Phone Shop</title>
 </head>
-<body>
-    <!-- Header -->
-    <header id="header" class="header">
-        <div class="navigation">
-          <div class="container">
-            <nav class="nav">
-              <div class="nav__hamburger">
-                <svg>
-                  <use xlink:href="./image/sprite.svg#icon-menu"></use>
-                </svg>
-              </div>
-    
-              <div class="nav__logo">
-                <a href="/" class="scroll-link">
-                  PHONE
-                </a>
-              </div>
-    
-              <div class="nav__menu">
-                <div class="menu__top">
-                  <span class="nav__category">PHONE</span>
-                  <a href="#" class="close__toggle">
-                    <svg>
-                      <use xlink:href="./image/sprite.svg#icon-cross"></use>
-                    </svg>
-                  </a>
-                </div>
-                <ul class="nav__list">
-                  <li class="nav__item">
-                    <a href="#header" class="nav__link scroll-link">Home</a>
-                  </li>
-                  <li class="nav__item">
-                    <a href="#category" class="nav__link scroll-link">Category</a>
-                  </li>
-                  <li class="nav__item">
-                    <a href="#news" class="nav__link scroll-link">Blog</a>
-                  </li>
-                  <li class="nav__item">
-                    <a href="#contact" class="nav__link scroll-link">Contact</a>
-                  </li>
-                </ul>
-              </div>
-    
-              <div class="nav__icons">
-                <a href="#" class="icon__item">
-                  <svg class="icon__user">
-                    <use xlink:href="./images/sprite.svg#icon-user"></use>
-                  </svg>
-                </a>
-    
-                <a href="#" class="icon__item">
-                  <svg class="icon__search">
-                    <use xlink:href="./images/sprite.svg#icon-search"></use>
-                  </svg>
-                </a>
-    
-                <a href="#" class="icon__item">
-                  <svg class="icon__cart">
-                    <use xlink:href="./images/sprite.svg#icon-shopping-basket"></use>
-                  </svg>
-                  <span id="cart__total">0</span>
-                </a>
-              </div>
-            </nav>
-          </div>
-        </div>
-    
-        <!-- Hero -->
-        <div class="hero">
-          <div class="glide" id="glide_1">
-            <div class="glide__track" data-glide-el="track">
-              <ul class="glide__slides">
-                <li class="glide__slide">
-                  <div class="hero__center">
-                    <div class="hero__left">
-                      <span class="">New Inspiration 2020</span>
-                      <h1 class="">PHONES MADE FOR YOU!</h1>
-                      <p>Trending from mobile and headphone style collection</p>
-                      <a href="#"><button class="hero__btn">SHOP NOW</button></a>
-                    </div>
-                    <div class="hero__right">
-                      <div class="hero__img-container">
-                        <img class="banner_01" src="./images/banner_01.png" alt="banner2" />
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="glide__slide">
-                  <div class="hero__center">
-                    <div class="hero__left">
-                      <span>New Inspiration 2020</span>
-                      <h1>PHONES MADE FOR YOU!</h1>
-                      <p>Trending from mobile and headphone style collection</p>
-                      <a href="#"><button class="hero__btn">SHOP NOW</button></a>
-                    </div>
-                    <div class="hero__right">
-                      <img class="banner_02" src="./images/banner_02.png" alt="banner2" />
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="glide__bullets" data-glide-el="controls[nav]">
-              <button class="glide__bullet" data-glide-dir="=0"></button>
-              <button class="glide__bullet" data-glide-dir="=1"></button>
-            </div>
-    
-            <div class="glide__arrows" data-glide-el="controls">
-              <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
-                <svg>
-                  <use xlink:href="./images/sprite.svg#icon-arrow-left2"></use>
-                </svg>
-              </button>
-              <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
-                <svg>
-                  <use xlink:href="./images/sprite.svg#icon-arrow-right2"></use>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
-      <!-- End Header -->
-    <!-- Glide Carousel Script -->
-    <script src="node_modules/@glidejs/glide/dist/glide.min.js"></script>
-    <!-- Animate On Scroll -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <script src="./js/product.js"></script>
-    <script src="./js/index.js"></script>
-    <script src="./js/slider.js"></script>
+<body>
+
+  <!-- Header -->
+  <header id="header" class="header">
+    <div class="navigation">
+      <div class="container">
+        <nav class="nav">
+          <div class="nav__hamburger">
+            <svg>
+              <use xlink:href="./images/sprite.svg#icon-menu"></use>
+            </svg>
+          </div>
+
+          <div class="nav__logo">
+            <a href="/" class="scroll-link">
+              Đình Thảo
+            </a>
+          </div>
+
+          <div class="nav__menu">
+            <div class="menu__top">
+              <span class="nav__category">Đình Thảo</span>
+              <a href="#" class="close__toggle">
+                <svg>
+                  <use xlink:href="./images/sprite.svg#icon-cross"></use>
+                </svg>
+              </a>
+            </div>
+            <ul class="nav__list">
+              <li class="nav__item">
+                <a href="#header" class="nav__link scroll-link">Home</a>
+              </li>
+              <li class="nav__item">
+                <a href="#category" class="nav__link scroll-link">Category</a>
+              </li>
+              <li class="nav__item">
+                <a href="#news" class="nav__link scroll-link">Blog</a>
+              </li>
+              <li class="nav__item">
+                <a href="#footer" class="nav__link scroll-link">Contact</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav__icons">
+            <a href="#" class="icon__item">
+              <svg class="icon__user">
+                <use xlink:href="./images/sprite.svg#icon-user"></use>
+              </svg>
+            </a>
+
+            <a href="#" class="icon__item">
+              <svg class="icon__search">
+                <use xlink:href="./images/sprite.svg#icon-search"></use>
+              </svg>
+            </a>
+
+            <a href="#" class="icon__item">
+              <svg class="icon__cart">
+                <use xlink:href="./images/sprite.svg#icon-shopping-basket"></use>
+              </svg>
+              <span id="cart__total">0</span>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </div>  
+    <!-- Hero -->
+    <div class="hero">
+      <div class="glide" id="glide_1">
+        <div class="glide__track" data-glide-el="track">
+          <ul class="glide__slides">
+            <li class="glide__slide">
+              <div class="hero__center">
+                <div class="hero__left">
+                  <span class="">New Inspiration 2020</span>
+                  <h1 class="">PHONES MADE FOR YOU!</h1>
+                  <p>Trending from mobile and headphone style collection</p>
+                  <a href="#"><button class="hero__btn">SHOP NOW</button></a>
+                </div>
+                <div class="hero__right">
+                  <div class="hero__img-container">
+                    <img class="banner_01" src="./images/banner_01.png" alt="banner2" />
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="glide__slide">
+              <div class="hero__center">
+                <div class="hero__left">
+                  <span>New Inspiration 2020</span>
+                  <h1>PHONES MADE FOR YOU!</h1>
+                  <p>Trending from mobile and headphone style collection</p>
+                  <a href="#"><button class="hero__btn">SHOP NOW</button></a>
+                </div>
+                <div class="hero__right">
+                  <img class="banner_02" src="./images/banner_02.png" alt="banner2" />
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="glide__bullets" data-glide-el="controls[nav]">
+          <button class="glide__bullet" data-glide-dir="=0"></button>
+          <button class="glide__bullet" data-glide-dir="=1"></button>
+        </div>
+
+        <div class="glide__arrows" data-glide-el="controls">
+          <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+            <svg>
+              <use xlink:href="./images/sprite.svg#icon-arrow-left2"></use>
+            </svg>
+          </button>
+          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+            <svg>
+              <use xlink:href="./images/sprite.svg#icon-arrow-right2"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- End Header -->
+  <!-- Glide Carousel Script -->
+  <div class="newsletter">
+    <div class="container">
+      <div class="row">
+
+        <!-- Newsletter Content -->
+        <div class="col-xl-6">
+          <div class="newsletter_content">
+            <div class="section_title"><h1>Subscribe & Follow</h1></div>
+            <div class="newsletter_text">
+              <p>Theo dõi chúng tôi để nhận được những thông tin và ưu đãi mới nhất!.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Newsletter Form -->
+        <div class="col-xl-6 nl_col">
+          <div class="newsletter_form_container d-flex flex-column align-items-start justify-content-end">
+            <form action="#" class="newsletter_form" id="newsletter_form">
+              <div class="d-flex flex-row align-items-start justify-content-between">
+                <input type="email" class="newsletter_input" placeholder="Enter your email" required="required">
+                <button class="button newsletter_button"><span>subscribe</span></button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <footer class="page-footer font-small mdb-color lighten-3 pt-4 footer" id="footer">
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left">
+  
+      <!-- Grid row -->
+      <div class="row">
+  
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
+  
+          <!-- Content -->
+          <h5 class="font-weight-bold mb-4">CONTENT</h5>
+          <p>Website used HTML,CSS and Boostrap</p>
+  
+        </div>
+        <!-- Grid column -->
+  
+        <hr class="clearfix w-100 d-md-none">
+  
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
+  
+          <!-- Links -->
+          <h5 class="font-weight-bold mb-4">Information</h5>
+  
+          <ul class="list-unstyled">
+            <li>
+              <p>
+                <a href="https://utc2.edu.vn/">University</a>
+              </p>
+            </li>
+            <!-- <li>
+              <p>
+                <a href="#!">BLOG</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="#!">AWARDS</a>
+              </p>
+            </li> -->
+          </ul>
+  
+        </div>
+        <!-- Grid column -->
+  
+        <hr class="clearfix w-100 d-md-none">
+  
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+  
+          <!-- Contact details -->
+          <h5 class="font-weight-bold mb-4">Contact US</h5>
+  
+          <ul class="list-unstyled">
+            <li>
+              <p>
+                <i class="fas fa-home mr-3"></i>450 Lê Văn Việt , Quận 9, Viet Nam</p>
+            </li>
+            <!-- <li>
+              <p>
+                <i class="fas fa-envelope mr-3"></i> trandinhthao2000@gmail.com</p>
+            </li> -->
+            <li>
+              <p>
+                <i class="fas fa-phone mr-3"></i> 0837 153 472</p>
+            </li>
+          </ul>
+  
+        </div>
+        <!-- Grid column -->
+  
+        <hr class="clearfix w-100 d-md-none">
+  
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
+  
+          <!-- Social buttons -->
+          <h5 class="font-weight-bold mb-4">FOLLOW ME</h5>
+            <div class="row">
+                <!-- Facebook -->
+                <div class="col">
+                    <a href="https://www.facebook.com/profile.php?id=100058422053540" type="button" class="btn-floating">
+                        <i class="fab fa-facebook-f fa-2x"></i>
+                    </a>
+                </div>
+                
+                <!-- Twitter -->
+                <div class="col">
+                    <a href="#" type="button" class="btn-floating">
+                        <i class="fab fa-youtube-square fa-2x"></i>
+                    </a>    
+                </div>
+                
+                <!-- Google +-->
+                <div class="col">
+                    <a href="#" type="button" class="btn-floating">
+                        <i class="fab fa-instagram fa-2x"></i>
+                    </a>
+                </div>
+                
+                <!-- Github -->
+                <div class="col">
+                    <a href="https://github.com/trandinhthao2000" type="button" class="btn-floating">
+                        <i class="fab fa-git-square fa-2x"></i>
+                    </a>
+                </div>
+                
+            </div>
+         
+        </div>
+        <!-- Grid column -->
+  
+      </div>
+      <!-- Grid row -->
+  
+    </div>
+    <!-- Footer Links -->
+  
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3 ">
+      <a href="https://www.facebook.com/profile.php?id=100058422053540">Trần Đình Thảo</a>
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+  <!-- Footer -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+  <!-- Animate On Scroll -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Custom JavaScript -->
+  <script src="./js/products.js"></script>
+  <script src="./js/index.js"></script>
+  <script src="./js/slider.js"></script>
+
+</body>
+
 </html>
