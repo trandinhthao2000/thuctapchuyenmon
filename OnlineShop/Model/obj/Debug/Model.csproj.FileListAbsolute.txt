@@ -1,0 +1,16 @@
+D:\OnlineShop\Model\bin\Debug\Model.dll.config
+D:\OnlineShop\Model\bin\Debug\Model.dll
+D:\OnlineShop\Model\bin\Debug\Model.pdb
+D:\OnlineShop\Model\bin\Debug\EntityFramework.dll
+D:\OnlineShop\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\OnlineShop\Model\bin\Debug\PagedList.dll
+D:\OnlineShop\Model\bin\Debug\PagedList.Mvc.dll
+D:\OnlineShop\Model\bin\Debug\EntityFramework.xml
+D:\OnlineShop\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\OnlineShop\Model\bin\Debug\PagedList.xml
+D:\OnlineShop\Model\bin\Debug\PagedList.Mvc.xml
+D:\OnlineShop\Model\obj\Debug\Model.csproj.AssemblyReference.cache
+D:\OnlineShop\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+D:\OnlineShop\Model\obj\Debug\Model.csproj.CopyComplete
+D:\OnlineShop\Model\obj\Debug\Model.dll
+D:\OnlineShop\Model\obj\Debug\Model.pdb
