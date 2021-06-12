@@ -10,7 +10,6 @@ namespace OnlineShop.Areas.Admin.Controllers
 {
     public class BaseController : Controller
     {
-        // GET: Admin/Base
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var session = (UserLogin)Session[CommonConstants.USER_SESSION];

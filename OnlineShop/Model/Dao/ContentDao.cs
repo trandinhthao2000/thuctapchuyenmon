@@ -1,4 +1,5 @@
-﻿using Model.EF;
+﻿using Common;
+using Model.EF;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -69,7 +70,65 @@ namespace Model.Dao
             db.SaveChanges();
             return content.ID;
         }
-
+        public long Create(Content content)
+        {
+            //xu li alias
+            if (string.IsNullOrEmpty(content.MetaTitle))
+            {
+                content.MetaTitle = StringHelper.ToUnsignString(content.Name);
+            }
+            content.CreatedDate = DateTime.Now;
+            content.ViewCount = 0;
+            db.Contents.Add(content);
+            db.SaveChanges();
+            //xu li tag
+            if (!string.IsNullOrEmpty(content.Tags))
+            {
+                string[] tags = content.Tags.Split(',');
+                foreach (var tag in tags)
+                {
+                    var tagId = StringHelper.ToUnsignString(tag);
+                    var existedTag = this.CheckTag(tagId);
+                    // them vao tag
+                    if (!existedTag)
+                    {
+                        this.InsertTag(tagId, tag);
+                    }
+                    // them vao content tag
+                    this.InsertContentTag(content.ID, tagId);
+                }
+            }
+            return content.ID;
+        }
+        public long Edit(Content content)
+        {
+            //xu li alias
+            if (string.IsNullOrEmpty(content.MetaTitle))
+            {
+                content.MetaTitle = StringHelper.ToUnsignString(content.Name);
+            }
+            content.CreatedDate = DateTime.Now;
+            db.SaveChanges();
+            //xu li tag
+            if (!string.IsNullOrEmpty(content.Tags))
+            {
+                this.removeAllContentTag(content.ID);
+                string[] tags = content.Tags.Split(',');
+                foreach (var tag in tags)
+                {
+                    var tagId = StringHelper.ToUnsignString(tag);
+                    var existedTag = this.CheckTag(tagId);
+                    // them vao tag
+                    if (!existedTag)
+                    {
+                        this.InsertTag(tagId, tag);
+                    }
+                    // them vao content tag
+                    this.InsertContentTag(content.ID, tagId);
+                }
+            }
+            return content.ID;
+        }
         public void removeAllContentTag(long contentId)
         {
             db.ContentTags.RemoveRange(db.ContentTags.Where(x => x.ContentID == contentId));
@@ -151,6 +210,5 @@ namespace Model.Dao
                 return false;
             }
         }
-
     }
 }

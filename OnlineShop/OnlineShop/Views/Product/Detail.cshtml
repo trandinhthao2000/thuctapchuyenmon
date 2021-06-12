@@ -20,9 +20,8 @@
                     <div id="container">
                         <div id="products_example">
                             <div id="products">
-                                <div class="slides_container" style="overflow: hidden; position: relative; display: block;">
-                                        <div class="slides_control" style="position: relative; width: 1098px; height: 274px; left: -366px;">
-                                            <a href="#" target="_blank" style="position: absolute; top: 0px; left: 366px; z-index: 5;"><img src="@Model.Image" alt=" "></a>
+                                <div class="slides_container">
+                                            <a href="#" target="_blank"><img src="@Model.Image" alt=" "></a>
                                     </div>
 
                                 </div><a href="#" class="prev">Prev</a><a href="#" class="next">Next</a>
@@ -45,14 +44,10 @@
                         <p>Giá: <span>@(Model.Price.HasValue? Model.Price.Value.ToString("N0"): "Liên Hệ")</span></p>
                     </div>
                     <div class="share-desc">
-                        <div class="share">
-                            <p>Chia sẻ :</p>
-                            <ul>
-                                <li><a href="#"><img src="images/facebook.png" alt=""></a></li>
-                                <li><a href="#"><img src="images/twitter.png" alt=""></a></li>
-                            </ul>
+                        
+                        <div class="button">
+                            <span><a style="text-decoration" href="/them-gio-hang?productId=@Model.ID&quantity=1">Thêm vào giỏ hàng</a></span>
                         </div>
-                        <div class="button"><span><a href="#">Thêm vào giỏ hàng</a></span></div>
                         <div class="clear"></div>
                     </div>
                     <div class="wish-list">
@@ -65,13 +60,13 @@
                 <div class="clear"></div>
             </div>
             <div class="product_desc">
-                <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+                <div id="horizontalTab">
                     <ul class="resp-tabs-list">
-                        <li class="resp-tab-item resp-tab-active" aria-controls="tab_item-0" role="tab">Chi Tiết</li>
+                        <li>Chi Tiết</li>
                         <div class="clear"></div>
                     </ul>
                     <div class="resp-tabs-container">
-                        <h2 class="resp-accordion resp-tab-active" role="tab" aria-controls="tab_item-0"><span class="resp-arrow"></span>Product Details</h2><div class="product-desc resp-tab-content resp-tab-content-active" style="display:block" aria-labelledby="tab_item-0">
+                        <div class="product-desc">
                            @Html.Raw(Model.Detail)
                         </div>
                     </div>
@@ -114,49 +109,6 @@
         <div class="rightsidebar span_3_of_1">
             <h2>Danh mục sản phẩm</h2>
             @{ Html.RenderAction("ProductCategory", "Product");}
-            <div class="subscribe">
-                <h2>Newsletters Signup</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.......</p>
-                <div class="signup">
-                    <form>
-                        <input type="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';"><input type="submit" value="Sign up">
-                    </form>
-                </div>
-            </div>
-            <div class="community-poll">
-                <h2>Community POll</h2>
-                <p>What is the main reason for you to purchase products online?</p>
-                <div class="poll">
-                    <form>
-                        <ul>
-                            <li>
-                                <input type="radio" name="vote" class="radio" value="1">
-                                <span class="label"><label>More convenient shipping and delivery </label></span>
-                            </li>
-                            <li>
-                                <input type="radio" name="vote" class="radio" value="2">
-                                <span class="label"><label for="vote_2">Lower price</label></span>
-                            </li>
-                            <li>
-                                <input type="radio" name="vote" class="radio" value="3">
-                                <span class="label"><label for="vote_3">Bigger choice</label></span>
-                            </li>
-                            <li>
-                                <input type="radio" name="vote" class="radio" value="5">
-                                <span class="label"><label for="vote_5">Payments security </label></span>
-                            </li>
-                            <li>
-                                <input type="radio" name="vote" class="radio" value="6">
-                                <span class="label"><label for="vote_6">30-day Money Back Guarantee </label></span>
-                            </li>
-                            <li>
-                                <input type="radio" name="vote" class="radio" value="7">
-                                <span class="label"><label for="vote_7">Other.</label></span>
-                            </li>
-                        </ul>
-                    </form>
-                </div>
-            </div>
         </div>
     </div>
 </div>

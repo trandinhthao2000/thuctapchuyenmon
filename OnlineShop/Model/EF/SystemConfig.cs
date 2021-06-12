@@ -16,7 +16,7 @@ namespace Model.EF
         public string Name { get; set; }
 
         [StringLength(50)]
-        public string Tyoe { get; set; }
+        public string Type { get; set; }
 
         [StringLength(250)]
         public string Value { get; set; }

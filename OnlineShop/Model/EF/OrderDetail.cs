@@ -9,6 +9,7 @@ namespace Model.EF
     [Table("OrderDetail")]
     public partial class OrderDetail
     {
+        public long ID { get; set; }
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

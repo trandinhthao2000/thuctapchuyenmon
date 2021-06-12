@@ -8,12 +8,10 @@ namespace OnlineShop.Areas.Admin.Models
 {
     public class LoginModel
     {
-        [Key]
-        [Required(ErrorMessage = "Moi ban nhap username")]
-        public string UserName { set; get; }
-
-        [Required(ErrorMessage = "Moi ban nhap password")]
-        public string Password { set; get; }
-        public bool RememberMe { set; get; }
+        [Required(ErrorMessage = "Mời nhập username")]
+        public string UserName { get; set; }
+        [Required(ErrorMessage = "Mời nhập password")]
+        public string Password { get; set; }
+        public bool RemmemberMe { get; set; }
     }
 }

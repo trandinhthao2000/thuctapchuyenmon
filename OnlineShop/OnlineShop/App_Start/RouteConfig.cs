@@ -33,15 +33,52 @@ namespace OnlineShop
              namespaces: new[] { "OnlineShop.Controllers" }
          );
             routes.MapRoute(
-             name: "Cart",
-             url: "gio-hang",
-             defaults: new { controller = "Cart", action = "AddItem", id = UrlParameter.Optional },
+             name: "Contact",
+             url: "lien-he",
+             defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional },
              namespaces: new[] { "OnlineShop.Controllers" }
          );
+            routes.MapRoute(
+             name: "Cart",
+             url: "gio-hang",
+             defaults: new { controller = "Cart", action = "Index", id = UrlParameter.Optional },
+             namespaces: new[] { "OnlineShop.Controllers" }
+         );
+            routes.MapRoute(
+            name: "Register",
+            url: "dang-ky",
+            defaults: new { controller = "User", action = "Register", id = UrlParameter.Optional },
+            namespaces: new[] { "OnlineShop.Controllers" }
+        );
+            routes.MapRoute(
+                name: "Login",
+                url: "dang-nhap",
+                defaults: new { controller = "User", action = "Login", id = UrlParameter.Optional },
+                namespaces: new[] { "OnlineShop.Controllers" }
+            );
+            routes.MapRoute(
+                name: "Search",
+                url: "tim-kiem",
+                defaults: new { controller = "Product", action = "Search", id = UrlParameter.Optional },
+                namespaces: new[] { "OnlineShop.Controllers" }
+            );
+            routes.MapRoute(
+             name: "Payment",
+             url: "thanh-toan",
+             defaults: new { controller = "Cart", action = "Payment", id = UrlParameter.Optional },
+             namespaces: new[] { "OnlineShop.Controllers" }
+            );
+
             routes.MapRoute(
              name: "Add Cart",
              url: "them-gio-hang",
              defaults: new { controller = "Cart", action = "AddItem", id = UrlParameter.Optional },
+             namespaces: new[] { "OnlineShop.Controllers" }
+         );
+            routes.MapRoute(
+             name: "Payment Success",
+             url: "hoan-thanh",
+             defaults: new { controller = "Cart", action = "Success", id = UrlParameter.Optional },
              namespaces: new[] { "OnlineShop.Controllers" }
          );
             routes.MapRoute(

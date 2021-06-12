@@ -37,10 +37,10 @@ namespace Model.EF
         [StringLength(250)]
         public string MetaKeywords { get; set; }
 
-        [StringLength(10)]
+        [StringLength(250)]
         public string MetaDescriptions { get; set; }
 
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
 
         public bool? ShowOnHome { get; set; }
     }

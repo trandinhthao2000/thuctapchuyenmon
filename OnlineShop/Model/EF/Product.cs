@@ -17,7 +17,7 @@ namespace Model.EF
         [StringLength(10)]
         public string Code { get; set; }
 
-        [StringLength(500)]
+        [StringLength(250)]
         public string MetaTitle { get; set; }
 
         [StringLength(500)]
@@ -29,13 +29,15 @@ namespace Model.EF
         [Column(TypeName = "xml")]
         public string MoreImages { get; set; }
 
+        public decimal? OriginalPrice { get; set; }
+
         public decimal? Price { get; set; }
 
         public decimal? PromotionPrice { get; set; }
 
         public bool? IncludedVAT { get; set; }
 
-        public int? Quantity { get; set; }
+        public int Quantity { get; set; }
 
         public long? CategoryID { get; set; }
 
@@ -57,10 +59,10 @@ namespace Model.EF
         [StringLength(250)]
         public string MetaKeywords { get; set; }
 
-        [StringLength(10)]
+        [StringLength(250)]
         public string MetaDescriptions { get; set; }
 
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
 
         public DateTime? TopHot { get; set; }
 

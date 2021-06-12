@@ -1,4 +1,5 @@
 ﻿using Model.EF;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,6 +65,15 @@ namespace Model.Dao
             {
                 return false;
             }
+        }
+        public IEnumerable<ProductCategory> ListAllPaging(string searchString, int page, int pageSize)
+        {
+            IQueryable<ProductCategory> model = db.ProductCategories;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.Name.Contains(searchString));
+            }
+            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
     }
 }
