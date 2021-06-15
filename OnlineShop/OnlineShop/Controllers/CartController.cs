@@ -26,7 +26,24 @@ namespace OnlineShop.Controllers
             }
             return View(list);
         }
-
+        public JsonResult DeleteAll()
+        {
+            Session[CartSession] = null;
+            return Json(new
+            {
+                status = true
+            });
+        }
+        public JsonResult Delete(long id)
+        {
+            var sessionCart = (List<CartItem>)Session[CartSession];
+            sessionCart.RemoveAll(x => x.Product.ID == id);
+            Session[CartSession] = sessionCart;
+            return Json(new
+            {
+                status = true
+            });
+        }
         public JsonResult Update(String cartModel)
         {
             var jsonCart = new JavaScriptSerializer().Deserialize<List<CartItem>>(cartModel);
@@ -40,25 +57,6 @@ namespace OnlineShop.Controllers
                 }
             }
             Session[CartSession] = sessionCart;
-            return Json(new
-            {
-                status = true
-            });
-        }
-
-        public JsonResult Delete(long id)
-        {
-            var sessionCart = (List<CartItem>)Session[CartSession];
-            sessionCart.RemoveAll(x => x.Product.ID == id);
-            Session[CartSession] = sessionCart;
-            return Json(new
-            {
-                status = true
-            });
-        }
-        public JsonResult DeleteAll()
-        {
-            Session[CartSession] = null;
             return Json(new
             {
                 status = true
@@ -103,7 +101,6 @@ namespace OnlineShop.Controllers
             }
             return RedirectToAction("Index");
         }
-
         [HttpGet]
         public ActionResult Payment()
         {
@@ -115,7 +112,6 @@ namespace OnlineShop.Controllers
             }
             return View(list);
         }
-
         [HttpPost]
         public ActionResult Payment(string shipName, string mobile, string address, string email)
         {
@@ -131,6 +127,7 @@ namespace OnlineShop.Controllers
                 var cart = (List<CartItem>)Session[CartSession];
                 var detailDao = new OrderDetailDao();
                 decimal total = 0;
+                long productId = 0;
                 foreach (var item in cart)
                 {
                     var orderDetail = new OrderDetail();
@@ -139,14 +136,14 @@ namespace OnlineShop.Controllers
                     orderDetail.Price = item.Product.Price;
                     orderDetail.Quantity = item.Quantity;
                     detailDao.Insert(orderDetail);
-
                     total += (item.Product.Price.GetValueOrDefault(0) * item.Quantity);
-
+                    productId = orderDetail.ProductID;
 
                 }
                 string content = System.IO.File.ReadAllText(Server.MapPath("~/Assets/client/template/neworder.html"));
 
                 content = content.Replace("{{CustomerName}}", shipName);
+                content = content.Replace("{{ProductId}}", productId.ToString("N0"));
                 content = content.Replace("{{Phone}}", mobile);
                 content = content.Replace("{{Email}}", email);
                 content = content.Replace("{{Address}}", address);
@@ -158,11 +155,10 @@ namespace OnlineShop.Controllers
             }
             catch (Exception ex)
             {
-                
+                return Redirect("/loi-thanh-toan");
             }
             return Redirect("/hoan-thanh");
         }
-
         public ActionResult Success()
         {
             return View();

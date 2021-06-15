@@ -16,6 +16,7 @@ namespace OnlineShop.Controllers
 {
     public class UserController : Controller
     {
+        public const string USER_SESSION = "USER_SESSION";
         private Uri RedirectUri
         {
             get
@@ -95,49 +96,84 @@ namespace OnlineShop.Controllers
             return Redirect("/");
         }
         [HttpPost]
-        [CaptchaValidation("CaptchaCode", "registerCaptcha", "Mã xác nhận không đúng!")]
-
-        public ActionResult Register(RegisterModel model)
+        public ActionResult Login(LoginModel model)
         {
             if (ModelState.IsValid)
             {
                 var dao = new UserDao();
-                if (dao.CheckUserName(model.UserName))
+                var result = dao.Login(model.UserName, Encryptor.MD5Hash(model.Password), true);
+                if (result == 1)
                 {
-                    ModelState.AddModelError("", "Tên đăng nhập đã tồn tại");
+                    var user = dao.GetById(model.UserName);
+                    var userSession = new UserLogin();
+                    userSession.UserName = user.UserName;
+                    userSession.UserID = user.ID;
+
+                    Session.Add(CommonConstants.USER_SESSION, userSession);
+                    return Redirect("/");
                 }
-                else if (dao.CheckEmail(model.Email))
+                else if (result == 0)
                 {
-                    ModelState.AddModelError("", "Email đã tồn tại");
+                    ModelState.AddModelError("", "Tài khoản không tồn tại.");
+                }
+                else if (result == -1)
+                {
+                    ModelState.AddModelError("", "Tài khoản đang bị khóa.");
+                }
+                else if (result == -2)
+                {
+                    ModelState.AddModelError("", "Mật khẩu không đúng.");
                 }
                 else
                 {
-                    var user = new User();
-                    user.Name = model.Name;
-                    user.Password = model.Password;
-                    user.Phone = model.Phone;
-                    user.Email = model.Email;
-                    user.Address = model.Address;
-                    user.CreatedDate = DateTime.Now;
-                    user.Status = true;
-                    if (!string.IsNullOrEmpty(model.ProvinceID))
-                    {
-                        user.ProvinceID = int.Parse(model.ProvinceID);
-                    }
-                    if (!string.IsNullOrEmpty(model.DistrictID))
-                    {
-                        user.DistrictID = int.Parse(model.DistrictID);
-                    }
-                    var result = dao.Insert(user);
-                    if(result > 0)
-                    {
-                        ViewBag.Success = "Đăng ký thành viên thành công";
-                        model = new RegisterModel();
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "Đăng ký không thành công");
-                    }
+                    ModelState.AddModelError("", "Đăng nhập không đúng!");
+                }
+            }
+            return View(model);
+        }
+        [HttpPost]
+        [CaptchaValidation("CaptchaCode", "registerCapcha", "Mã xác nhận không đúng")]
+        public ActionResult Register(RegisterModel model)
+        {
+            var dao = new UserDao();
+            if (dao.CheckUserName(model.UserName))
+            {
+                ModelState.AddModelError("", "Tên đăng nhập đã tồn tại");
+            }
+            else if (dao.CheckEmail(model.Email))
+            {
+                ModelState.AddModelError("", "Email đã tồn tại");
+            }
+            else if (model.Password == model.ConfirmPassword)
+            {
+                var user = new User();
+                user.UserName = model.UserName;
+                user.Name = model.Name;
+                user.Password = Encryptor.MD5Hash(model.Password);
+                user.Phone = model.Phone;
+                user.Email = model.Email;
+                user.Address = model.Address;
+                user.CreatedDate = DateTime.Now;
+                user.DistrictID = int.Parse(model.DistrictID);
+                user.ProvinceID = int.Parse(model.ProvinceID);
+                user.Status = true;
+                if (!string.IsNullOrEmpty(model.DistrictID))
+                {
+                    user.DistrictID = int.Parse(model.DistrictID);
+                }
+                if (!string.IsNullOrEmpty(model.ProvinceID))
+                {
+                    user.ProvinceID = int.Parse(model.ProvinceID);
+                }
+                var result = dao.Insert(user);
+                if (result > 0)
+                {
+                    ViewBag.Success = "Đăng kí thành công";
+                    model = new RegisterModel();
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Đăng kí không thành công");
                 }
             }
             return View(model);

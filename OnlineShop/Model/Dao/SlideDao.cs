@@ -19,6 +19,15 @@ namespace Model.Dao
         {
             return db.Slides.Where(x => x.Status == true).OrderBy(y => y.DisplayOrder).ToList();
         }
+        public IEnumerable<Slide> ListAllPaging(string searchString, int page, int pageSize)
+        {
+            IQueryable<Slide> model = db.Slides;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.Description.Contains(searchString) || x.CreatedBy.Contains(searchString));
+            }
+            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+        }
         public long Insert(Slide entity)
         {
             entity.CreatedDate = DateTime.Now;
@@ -38,6 +47,7 @@ namespace Model.Dao
                 slide.Link = entity.Link;
                 slide.DisplayOrder = entity.DisplayOrder;
                 slide.Image = entity.Image;
+                slide.Description = entity.Description;
                 slide.ModifiedBy = entity.ModifiedBy;
                 slide.ModifiedDate = DateTime.Now;
                 slide.Status = entity.Status;
@@ -63,7 +73,12 @@ namespace Model.Dao
                 return false;
             }
         }
-
-
+        public bool ChangeStatus(long id)
+        {
+            var slide = db.Slides.Find(id);
+            slide.Status = !slide.Status;
+            db.SaveChanges();
+            return slide.Status;
+        }
     }
 }

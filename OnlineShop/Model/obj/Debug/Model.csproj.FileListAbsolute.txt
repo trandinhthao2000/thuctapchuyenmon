@@ -16,3 +16,9 @@ D:\OnlineShop\Model\obj\Debug\Model.dll
 D:\OnlineShop\Model\obj\Debug\Model.pdb
 D:\OnlineShop\Model\bin\Debug\Common.dll
 D:\OnlineShop\Model\bin\Debug\Common.pdb
+D:\OnlineShop\Model\obj\Debug\Model.csproj.ResolveComReference.cache
+D:\OnlineShop\Model\bin\Debug\EPPlus.dll
+D:\OnlineShop\Model\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+D:\OnlineShop\Model\bin\Debug\System.ComponentModel.Annotations.dll
+D:\OnlineShop\Model\bin\Debug\EPPlus.xml
+D:\OnlineShop\Model\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml

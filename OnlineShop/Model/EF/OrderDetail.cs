@@ -10,14 +10,14 @@ namespace Model.EF
     public partial class OrderDetail
     {
         public long ID { get; set; }
-        [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //[Key]
+        //[Column(Order = 0)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]   
         public long ProductID { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //[Key]
+        //[Column(Order = 1)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long OrderID { get; set; }
 
         public int? Quantity { get; set; }

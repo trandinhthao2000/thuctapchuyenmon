@@ -1,10 +1,13 @@
 ﻿@model PagedList.IPagedList<Model.EF.Product>
 @using PagedList.Mvc;
-@{ ViewBag.Title = "Index";
-   Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml"; }
+@{ ViewBag.Title = "Quản lý danh mục sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml"; }
 
+@section header{
+    Danh sách sản phẩm
+}
 @section jsFooter{
-    <script src="/Assets/admin/js/controller/productController.js"></script>
+    <script src="~/Assets/admin/js/controller/productController.js"></script>
 }
 <div class="row">
     <div class="col-lg-12">

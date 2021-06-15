@@ -9,7 +9,7 @@
     Thông tin đơn hàng
 }
 @section jsFooter{
-    <script src="/Assets/admin/js/controller/cartController.js"></script>
+    <script src="~/Assets/admin/js/controller/cartController.js"></script>
 }
 <div class="row">
     <div class="col-lg-12">
@@ -24,7 +24,8 @@
                                 <button type="submit" class="btn btn-success">Tìm kiếm</button>
                             </div>
                         </div>
-                    </div>}
+                    </div>
+                }
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
@@ -54,7 +55,7 @@
                                     <td>@item.Price.GetValueOrDefault(0).ToString("N0")</td>
                                     <td><a href="#" class="btn-active" data-id="@item.OrderId">@(item.Status? "Hoàn thành":"Đang xử lí")</a></td>
                                 </tr>
-}
+                            }
                         </tbody>
                     </table>
                 </div>

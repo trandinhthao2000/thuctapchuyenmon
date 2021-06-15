@@ -1,4 +1,5 @@
-﻿using Model.EF;
+﻿using Common;
+using Model.EF;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace Model.Dao
         }
         public long Insert(User entity)
         {
+            entity.GroupID = "MEMBER";
             db.Users.Add(entity);
             db.SaveChanges();
             return entity.ID;
@@ -35,8 +37,10 @@ namespace Model.Dao
                 {
                     user.Password = entity.Password;
                 }
+                user.GroupID = entity.GroupID;
                 user.Address = entity.Address;
                 user.Email = entity.Email;
+                user.Phone = entity.Phone;
                 user.ModifiedBy = entity.ModifiedBy;
                 user.ModifiedDate = DateTime.Now;
                 db.SaveChanges();
@@ -60,29 +64,49 @@ namespace Model.Dao
         {
             return db.Users.Find(id);
         }
-        public int Login(string userName, string passWord)
+
+        public int Login(string userName, string passWord, bool isLoginAdmin = false)
         {
             var result = db.Users.SingleOrDefault(x => x.UserName == userName);
-
             if (result == null)
             {
                 return 0;
             }
             else
             {
-                if (result.Status == false)
+                if (isLoginAdmin == true)
                 {
-                    return -1;
-                }
-                else
-                {
-                    if (result.Password == passWord)
+                    if (result.GroupID == CommonConstants.ADMIN_GROUP || result.GroupID == CommonConstants.MOD_GROUP)
                     {
-                        return 1;
+                        if (result.Status == false)
+                        {
+                            return -1;
+                        }
+                        else
+                        {
+                            if (result.Password == passWord)
+                                return 1;
+                            else
+                                return -2;
+                        }
                     }
                     else
                     {
-                        return -2;
+                        return -3;
+                    }
+                }
+                else
+                {
+                    if (result.Status == false)
+                    {
+                        return -1;
+                    }
+                    else
+                    {
+                        if (result.Password == passWord)
+                            return 1;
+                        else
+                            return -2;
                     }
                 }
             }
@@ -134,5 +158,25 @@ namespace Model.Dao
             }
 
         }
+        public List<string> GetListCredential(string userName)
+        {
+            var user = db.Users.Single(x => x.UserName == userName);
+            var data = (from a in db.Credentials
+                        join b in db.UserGroups on a.UserGroupID equals b.ID
+                        join c in db.Roles on a.RoleID equals c.ID
+                        where b.ID == user.GroupID
+                        select new
+                        {
+                            RoleID = a.RoleID,
+                            UserGroupID = a.UserGroupID
+                        }).AsEnumerable().Select(x => new Credential()
+                        {
+                            RoleID = x.RoleID,
+                            UserGroupID = x.UserGroupID
+                        });
+            return data.Select(x => x.RoleID).ToList();
+
+        }
+
     }
 }

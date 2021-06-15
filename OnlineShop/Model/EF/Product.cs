@@ -35,7 +35,7 @@ namespace Model.EF
 
         public decimal? PromotionPrice { get; set; }
 
-        public bool? IncludedVAT { get; set; }
+        public bool IncludedVAT { get; set; }
 
         public int Quantity { get; set; }
 

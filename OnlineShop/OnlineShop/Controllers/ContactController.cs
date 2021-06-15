@@ -30,7 +30,16 @@ namespace OnlineShop.Controllers
             feedback.Address = address;
 
             var id = new ContactDao().InsertFeedBack(feedback);
+            string noidung = System.IO.File.ReadAllText(Server.MapPath("~/Assets/client/template/contact.html"));
+            noidung = noidung.Replace("{{CustomerName}}", name);
+            noidung = noidung.Replace("{{Phone}}", mobile);
+            noidung = noidung.Replace("{{Email}}", email);
+            noidung = noidung.Replace("{{Address}}", address);
+            noidung = noidung.Replace("{{Content}}", content);
 
+            var toEmail = ConfigurationManager.AppSettings["ToEmailAddress"].ToString();
+
+            new MailHelper().SendMail(toEmail, "Phản hồi từ khách hàng:", noidung);
             if (id > 0)
             {
                 return Json(new

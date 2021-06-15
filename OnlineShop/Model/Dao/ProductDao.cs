@@ -70,7 +70,7 @@ namespace Model.Dao
         }
         public List<Product> ListAll()
         {
-            return db.Products.OrderBy(x=>x.CreatedDate).ToList();
+            return db.Products.OrderBy(x => x.CreatedDate).ToList();
         }
         public Product ViewDetail(long id)
         {

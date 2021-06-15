@@ -1,14 +1,14 @@
 ﻿@model Model.EF.About
 
 @{
-    ViewBag.Title = "Cập nhật giới thiệu";
+    ViewBag.Title = "Cập nhật bài viết";
     Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
 }
 
 <h2>Edit</h2>
 
 @section header{
-    Cập nhật thông tin giới thiệu
+    Cập nhật thông tin bài viết
 }
 @section jsFooter{
     <script>
@@ -51,7 +51,7 @@
 }
 @using (Html.BeginForm())
 {
-                @Html.AntiForgeryToken()
+@Html.AntiForgeryToken()
 
                 <div class="form-horizontal">
                     <h4>About</h4>

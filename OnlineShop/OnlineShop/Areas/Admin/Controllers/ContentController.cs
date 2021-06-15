@@ -1,4 +1,5 @@
-﻿using Model.Dao;
+﻿
+using Model.Dao;
 using Model.EF;
 using OnlineShop.Common;
 using System;
@@ -54,12 +55,7 @@ namespace OnlineShop.Areas.Admin.Controllers
             SetViewBag();
             return View();
         }
-        public ActionResult Delete(int id)
-        {
-            new ContentDao().Delete(id);
-
-            return RedirectToAction("Index");
-        }
+       
         [HttpPost]
         [ValidateInput(false)]
         public ActionResult Create(Content model)
@@ -84,6 +80,14 @@ namespace OnlineShop.Areas.Admin.Controllers
         {
             file.SaveAs(Server.MapPath("~/Assets/admin/img/" + file.FileName));
             return "/Assets/admin/img/" + file.FileName;
+        }
+
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+            new ContentDao().Delete(id);
+
+            return RedirectToAction("Index");
         }
     }
 }

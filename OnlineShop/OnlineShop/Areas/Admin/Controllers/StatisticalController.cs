@@ -24,5 +24,6 @@ namespace OnlineShop.Areas.Admin.Controllers
             ViewBag.Keyword = keyword;
             return View(model);
         }
+        
     }
 }

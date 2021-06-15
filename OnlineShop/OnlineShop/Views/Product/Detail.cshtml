@@ -1,6 +1,6 @@
 ﻿@model Model.EF.Product
 @{
-    ViewBag.Title = "Detail";
+    ViewBag.Title = Model.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
     var category = (Model.EF.ProductCategory)ViewBag.Category;
     var relatedProducts = (List<Model.EF.Product>)ViewBag.RelatedProducts;
@@ -9,7 +9,7 @@
 <div class="content">
     <div class="content_top">
         <div class="back-links">
-            <p><a href="/">Trang Chủ</a> >>>> <a href="/san-pham/@category.MetaTitle-@category.ID">@category.Name</a></p>
+            <p><a href="/">Trang Chủ</a></p>/<p><a href="/san-pham/@category.MetaTitle-@category.ID">@category.Name</a></p>
         </div>
         <div class="clear"></div>
     </div>
@@ -24,9 +24,8 @@
                                             <a href="#" target="_blank"><img src="@Model.Image" alt=" "></a>
                                     </div>
 
-                                </div><a href="#" class="prev">Prev</a><a href="#" class="next">Next</a>
                                 <ul class="pagination">
-                                    <li class="current"><a href="#0"><img src="images/thumbnailslide-1.jpg" alt=" "></a></li>
+
                                     <li><a href="#1"><img src="images/thumbnailslide-2.jpg" alt=" "></a></li>
                                     <li><a href="#2"><img src="images/thumbnailslide-3.jpg" alt=" "></a></li>
                                     <li><a href="#3"><img src="images/thumbnailslide-4.jpg" alt=" "></a></li>
@@ -44,7 +43,9 @@
                         <p>Giá: <span>@(Model.Price.HasValue? Model.Price.Value.ToString("N0"): "Liên Hệ")</span></p>
                     </div>
                     <div class="share-desc">
-                        
+                        <p>Chia sẻ :</p>
+                        <ul><li><a href="#"></a></li></ul>
+                        <ul><li><a href="#"></a></li></ul>
                         <div class="button">
                             <span><a style="text-decoration" href="/them-gio-hang?productId=@Model.ID&quantity=1">Thêm vào giỏ hàng</a></span>
                         </div>
@@ -93,17 +94,23 @@
             <div class="section group">
                 @foreach (var item in relatedProducts)
                 {
-                    var url = "/chitiet/" + item.MetaTitle + "-" + item.ID;
+                    var url = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
                     <div class="grid_1_of_4 images_1_of_4">
                         <a href="@url"><img src="@item.Image" alt=""></a>
                         <div class="price" style="border:none">
+                            <div class="product-body">
+                                <h3 class="product-name"><a href="#">@item.Name</a></h3>
+                                <h4 class="product-price">@(item.Price.HasValue? item.Price.Value.ToString("N0"):"Liên hệ")></h4>
+                                <h4>@(item.Status? "Còn hàng":"Hết hàng")</h4>
+                            </div>
                             <div class="add-cart" style="float:none">
-                                <h4><a href="@url">Add to Cart</a></h4>
+                                <h4><a href="/them-gio-hang?productId=@item.ID&quantity=1">Thêm vào giỏ hàng</a></h4>
                             </div>
                             <div class="clear"></div>
                         </div>
                     </div>
                 }
+
             </div>
         </div>
         <div class="rightsidebar span_3_of_1">
@@ -111,5 +118,4 @@
             @{ Html.RenderAction("ProductCategory", "Product");}
         </div>
     </div>
-</div>
 

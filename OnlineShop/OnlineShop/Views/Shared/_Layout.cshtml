@@ -7,14 +7,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Free Home Shoppe Website Template | Home :: w3layouts</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="~/Assets/client/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Assets/client/css/slider.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Assets/client/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Assets/client/css/bootstrap.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
     <script src="~/Assets/client/js/jquery-3.6.0.min.js"></script>
     <script src="~/Assets/client/js/bootstrap.min.js"></script>
@@ -79,16 +78,38 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             @RenderBody()
         </div>
     </div>
+    <div class="newsletter">
+        <div class="container">
+            <div class="row">
+
+                <!-- Newsletter Content -->
+                <div class="col-xl-6">
+                    <div class="newsletter_content">
+                        <div class="section_title"><h1>Subscribe & Follow</h1></div>
+                        <div class="newsletter_text">
+                            <p>Theo dõi chúng tôi để nhận được những thông tin và ưu đãi mới nhất!.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Newsletter Form -->
+                <div class="col-xl-6 nl_col">
+                    <div class="newsletter_form_container d-flex flex-column align-items-start justify-content-end">
+                        <form action="#" class="newsletter_form" id="newsletter_form">
+                            <div class="d-flex flex-row align-items-start justify-content-between">
+                                <input type="email" class="newsletter_input" placeholder="Enter your email" required="required">
+                                <button class="button newsletter_button"><span>subscribe</span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <div class="footer">
         @{ Html.RenderAction("Footer", "Home"); }
     </div>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $().UItoTop({ easingType: 'easeOutQuart' });
-        });
-    </script>
-
-    <a href="#" id="toTop"><span id="toTopHover"> </span></a>
     @RenderSection("jsFooter", required: false);
 </body>
 </html>

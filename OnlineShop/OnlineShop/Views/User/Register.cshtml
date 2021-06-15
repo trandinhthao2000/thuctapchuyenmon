@@ -13,7 +13,7 @@
 <div class="content">
     @using (Html.BeginForm("Register", "User", FormMethod.Post))
     {
-                @Html.AntiForgeryToken()
+@Html.AntiForgeryToken()
 
                 <div class="form-horizontal">
                     <h4>Đăng ký thành viên</h4>
@@ -22,8 +22,7 @@
                         @Html.ValidationSummary(false, "", new { @class = "text-danger" })
                         @if (ViewBag.Success != null)
                         {
-                            <div class="alert alert-success">@ViewBag.Success</div>
-                        }
+        <div class="alert alert-success">@ViewBag.Success</div>}
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-2" })

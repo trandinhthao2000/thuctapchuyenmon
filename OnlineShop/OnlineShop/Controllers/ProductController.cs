@@ -54,6 +54,10 @@ namespace OnlineShop.Controllers
             ViewBag.RelatedProducts = new ProductDao().ListRelatedProduct(id);
             return View(product);
         }
-
+        public ActionResult SanPham()
+        {
+            var product = new ProductDao().ListAll();
+            return View(product);
+        }
     }
 }

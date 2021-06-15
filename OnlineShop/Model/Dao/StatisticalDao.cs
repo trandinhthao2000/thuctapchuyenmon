@@ -1,7 +1,11 @@
-﻿using Model.EF;
+﻿using Microsoft.Office.Interop.Excel;
+using Model.EF;
 using Model.ViewModel;
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;

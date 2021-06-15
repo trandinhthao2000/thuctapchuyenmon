@@ -44,7 +44,7 @@
                 }
             })
         });
-        $('.btn-delete').off('click').on('click', function (e) {
+        $('.btndelete').off('click').on('click', function (e) {
             e.preventDefault();
             $.ajax({
                 data: { id: $(this).data('id') },
