@@ -13,7 +13,7 @@ namespace Model.EF
         }
 
         public virtual DbSet<About> Abouts { get; set; }
-        //public virtual DbSet<Admin> Admins { get; set; }
+        //public virtual DbSet<Ad> Admins { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Content> Contents { get; set; }
@@ -56,15 +56,15 @@ namespace Model.EF
                 .Property(e => e.MetaDescriptions)
                 .IsFixedLength();
 
-            //modelBuilder.Entity<Admin>()
+            //modelBuilder.Entity<Ad>()
             //    .Property(e => e.UserName)
             //    .IsUnicode(false);
 
-            //modelBuilder.Entity<Admin>()
+            //modelBuilder.Entity<Ad>()
             //    .Property(e => e.Password)
             //    .IsUnicode(false);
 
-            //modelBuilder.Entity<Admin>()
+            //modelBuilder.Entity<Ad>()
             //    .Property(e => e.GroupID)
             //    .IsUnicode(false);
 

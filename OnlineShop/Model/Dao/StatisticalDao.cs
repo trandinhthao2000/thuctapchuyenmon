@@ -408,16 +408,12 @@ namespace Model.Dao
         }
         private void BindingFormatForExcel(ExcelWorksheet worksheet, List<ThongkeModel> listItems)
         {
-            // Set default width cho tất cả column
             worksheet.DefaultColWidth = 10;
-            // Tự động xuống hàng khi text quá dài
             worksheet.Cells.Style.WrapText = true;
-            // Tạo header
             worksheet.Cells[1, 1].Value = "Thời gian";
             worksheet.Cells[1, 2].Value = "Doanh thu";
             worksheet.Cells[1, 3].Value = "Lợi nhuận";
 
-            // Lấy range vào tạo format cho range đó ở đây là từ A1 tới D1
             using (var range = worksheet.Cells["A1:D1"])
             {
                 range.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
@@ -432,7 +428,6 @@ namespace Model.Dao
                 worksheet.Cells[i + 2, 3].Value = item.loinhuan;
                 if (item.loinhuan > 10000000)
                 {
-                    // Ở đây chúng ta sẽ format lại theo dạng fromRow,fromCol,toRow,toCol
                     using (var range = worksheet.Cells[i + 2, 1, i + 2, 4])
                     {
                         range.Style.Font.Color.SetColor(Color.Red);

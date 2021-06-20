@@ -1,9 +1,13 @@
 ﻿using Model.Dao;
+using Model.EF;
 using OnlineShop.Areas.Admin.Models;
 using OnlineShop.Common;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -21,7 +25,7 @@ namespace OnlineShop.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var dao = new UserDao();
-                var result = dao.Login(model.UserName, Encryptor.MD5Hash(model.Password),true);
+                var result = dao.Login(model.UserName, Encryptor.MD5Hash(model.Password), true);
                 if (result == 1)
                 {
                     var user = dao.GetById(model.UserName);
@@ -57,6 +61,49 @@ namespace OnlineShop.Areas.Admin.Controllers
                 }
             }
             return View("Index");
+        }
+        [HttpGet]
+        public ActionResult ChangePassword()
+        {
+            User user = (User)Session["changepass"];
+            return View(user);
+        }
+
+        [HttpGet]
+        public ActionResult ForgotPassword()
+        {
+            LoginModel login = new LoginModel();
+            login.Password = "1111";
+            login.UserName = "1111";
+            ViewBag.Message = "";
+            return View(login);
+        }
+
+        public class MailHelper
+        {
+            public void SendMail(string toEmailAddress, string subject, string content)
+            {
+                var fromEmailAddress = ConfigurationManager.AppSettings["FromEmailAddress"].ToString();
+                var fromEmailDisplayName = ConfigurationManager.AppSettings["FromEmailDisplayName1"].ToString();
+                var fromEmailPassword = ConfigurationManager.AppSettings["FromEmailPassword"].ToString();
+                var smtpHost = ConfigurationManager.AppSettings["SMTPHost"].ToString();
+                var smtpPort = ConfigurationManager.AppSettings["SMTPPort"].ToString();
+
+                bool enabledSsl = bool.Parse(ConfigurationManager.AppSettings["EnabledSSL"].ToString());
+
+                string body = content;
+                MailMessage message = new MailMessage(new MailAddress(fromEmailAddress, fromEmailDisplayName), new MailAddress(toEmailAddress));
+                message.Subject = subject;
+                message.IsBodyHtml = true;
+                message.Body = body;
+
+                var client = new SmtpClient();
+                client.Credentials = new NetworkCredential(fromEmailAddress, fromEmailPassword);
+                client.Host = smtpHost;
+                client.EnableSsl = enabledSsl;
+                client.Port = !string.IsNullOrEmpty(smtpPort) ? Convert.ToInt32(smtpPort) : 0;
+                client.Send(message);
+            }
         }
     }
 }
