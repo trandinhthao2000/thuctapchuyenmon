@@ -12,16 +12,15 @@
     <div class="card-body p-0">
         <!-- Nested Row within Card Body -->
         <div class="row">
-            <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
             <div class="col-lg-7">
                 <div class="p-5">
-                    <div class="text-center">
+                    <div class="text-left">
                         <h1 class="h4 text-gray-900 mb-4">Tạo tài khoản!</h1>
                     </div>
 
                     @using (Html.BeginForm("Create", "User", FormMethod.Post))
                     {
-        @Html.AntiForgeryToken()
+                        @Html.AntiForgeryToken()
 
                         <div class="form-horizontal">
                             <hr />

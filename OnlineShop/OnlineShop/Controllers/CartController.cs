@@ -155,7 +155,7 @@ namespace OnlineShop.Controllers
             }
             catch (Exception ex)
             {
-                return Redirect("/loi-thanh-toan");
+                //return Redirect("/loi-thanh-toan");
             }
             return Redirect("/hoan-thanh");
         }

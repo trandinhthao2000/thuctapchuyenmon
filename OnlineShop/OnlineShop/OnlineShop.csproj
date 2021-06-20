@@ -57,22 +57,34 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=5.7.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.5.7.0\lib\net45\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
       <HintPath>..\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
     <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\lib\net46\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -235,6 +247,7 @@
     <Content Include="Assets\admin\js\controller\cartController.js" />
     <Content Include="Assets\admin\js\controller\contentController.js" />
     <Content Include="Assets\admin\js\controller\feedbackController.js" />
+    <Content Include="Assets\admin\js\controller\productcategoryController.js" />
     <Content Include="Assets\admin\js\controller\productController.js" />
     <Content Include="Assets\admin\js\controller\slideController.js" />
     <Content Include="Assets\admin\js\controller\userController.js" />
@@ -1956,7 +1969,7 @@
     <Content Include="Assets\client\images\feature-pic4.jpg" />
     <Content Include="Assets\client\images\linkedin.png" />
     <Content Include="Assets\client\images\list-img.png" />
-    <Content Include="Assets\client\images\logo.png" />
+    <Content Include="Assets\client\images\logo1.png" />
     <Content Include="Assets\client\images\new-pic1.jpg" />
     <Content Include="Assets\client\images\new-pic2.jpg" />
     <Content Include="Assets\client\images\new-pic3.jpg" />
@@ -2005,6 +2018,7 @@
     <Content Include="Assets\client\js\startstop-slider.js" />
     <Content Include="Assets\client\template\contact.html" />
     <Content Include="Assets\client\template\neworder.html" />
+    <Content Include="Assets\client\template\reply.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -2268,12 +2282,13 @@
     <Content Include="Areas\Admin\Views\Order\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Statistical\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Statistical\Search.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\401.cshtml" />
     <Content Include="Assets\client\font\slick.eot" />
     <Content Include="Assets\client\font\slick.ttf" />
     <Content Include="Assets\client\font\slick.woff" />
+    <Content Include="Areas\Admin\Views\Statistical\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Statistical\Search.cshtml" />
+    <Content Include="Areas\Admin\Views\FeedBack\Reply.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2317,7 +2332,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\MainMenu.cshtml" />
     <Content Include="Views\Shared\TopMenu.cshtml" />
-    <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Shared\ProductCategory.cshtml" />
     <Content Include="Views\Product\Category.cshtml" />
     <Content Include="Views\Product\Detail.cshtml" />
@@ -2334,6 +2348,7 @@
     <Content Include="Views\Content\Tag.cshtml" />
     <Content Include="Views\Content\Detail.cshtml" />
     <Content Include="Views\Product\SanPham.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

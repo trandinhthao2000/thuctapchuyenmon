@@ -85,7 +85,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         [HttpPost]
         public JsonResult ChangeStatus(long id)
         {
-            var result = new ProductDao().ChangeStatus(id);
+            var result = new ProductCategoryDao().ChangeStatus(id);
             return Json(new
             {
                 status = result

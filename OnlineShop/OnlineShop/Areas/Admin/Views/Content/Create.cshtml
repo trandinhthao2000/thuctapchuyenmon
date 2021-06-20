@@ -11,20 +11,14 @@
 @section jsFooter{
     <script>
         $(function () {
-            //đăng kí sự kiện click của btnUpload
             $('#btnUpload').click(function () {
                 $('#Upload').trigger('click');
             });
-            //Bắt sự kiện change data của fileUpload
             $('#Upload').change(function () {
-                //kiểm tra trình duyệt có hỗ trợ formdata
                 if (window.FormData !== undefined) {
-                    //Lấy dữ liệu trên fileUpload
                     var fileUpload = $('#Upload').get(0);
                     var files = fileUpload.files;
-                    //tao doi tuong formdata
                     var formData = new FormData();
-                    //dua du lieu vao form
                     formData.append('file', files[0]);
                     $.ajax({
 

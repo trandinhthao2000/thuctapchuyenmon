@@ -10,22 +10,15 @@
 }
 @section jsFooter {
     <script>
-@*import { Alert } from "../../../../Assets/admin/vendor/bootstrap/js/bootstrap.bundle";   *@
         $(function () {
-            //đăng kí sự kiện click của btnUpload
             $('#btnUpload').click(function () {
                 $('#Upload').trigger('click');
             });
-            //Bắt sự kiện change data của fileUpload
             $('#Upload').change(function () {
-                //kiểm tra trình duyệt có hỗ trợ formdata
                 if (window.FormData !== undefined) {
-                    //Lấy dữ liệu trên fileUpload
                     var fileUpload = $('#Upload').get(0);
                     var files = fileUpload.files;
-                    //tao doi tuong formdata
                     var formData = new FormData();
-                    //dua du lieu vao form
                     formData.append('file', files[0]);
                     $.ajax({
 
@@ -39,30 +32,23 @@
                             $('#Image').val(urlImage);
                         },
                         error: function (err) {
-                           @* Alert('Có lỗi khi upload:' + err.statusText);*@
+                           
                         }
                     })
                 }
             });
         });
         $(function () {
-            //đăng kí sự kiện click của btnUpload
             $('#btnUploadMore').click(function () {
                 $('#UploadMore').trigger('click');
             });
-            //Bắt sự kiện change data của fileUpload
             $('#UploadMore').change(function () {
-                //kiểm tra trình duyệt có hỗ trợ formdata
                 if (window.FormData !== undefined) {
-                    //Lấy dữ liệu trên fileUpload
                     var fileUpload = $('#UploadMore').get(0);
                     var files = fileUpload.files;
-                    //tao doi tuong formdata
                     var formData = new FormData();
-                    //dua du lieu vao form
                     formData.append('file', files[0]);
                     $.ajax({
-
                         type: 'POST',
                         url: '/Admin/Product/ProcessUploadMore',
                         contentType: false,
@@ -88,7 +74,7 @@
         <div class="p-5">
             @using (Html.BeginForm())
             {
-@Html.AntiForgeryToken()
+                @Html.AntiForgeryToken()
 
                 <div class="form-horizontal">
                     <hr />
@@ -244,8 +230,8 @@
                             <button>Thêm</button>
                         </div>
                     </div>
-                </div>            }
-
+                </div>
+                }
         </div>
     </div>
 </div>

@@ -1,14 +1,16 @@
 ﻿@model List<OnlineShop.Models.CartItem>
 <div class="cart">
     <p>
+        <i class="fa fa-shopping-cart"></i>
         <span> <a style="text-decoration: none;" href="/gio-hang">ViewCart:</a></span>
         <div id="dd" class="wrapper-dropdown-2">
-            @Model.Count sản phẩm 
+            @Model.Count sản phẩm
             <ul class="dropdown">
                 <li>Bạn có @Model.Count sản phẩm trong giỏ hàng</li>
-                @foreach(var item in Model)
+                @foreach (var item in Model)
                 {
-                    <li>@item.Product.Name (@item.Quantity)</li> 
+                    
+                <li><img src="@item.Product.Image" width="30" /> @item.Product.Name (@item.Quantity)</li>
                 }
             </ul>
         </div>

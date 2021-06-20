@@ -87,7 +87,12 @@ namespace OnlineShop
                 defaults: new { controller = "Product", action = "Search", id = UrlParameter.Optional },
                 namespaces: new[] { "OnlineShop.Controllers" }
             );
-
+            routes.MapRoute(
+                name: "Tags",
+                url: "tag/{tagId}",
+                defaults: new { controller = "Content", action = "Tag", id = UrlParameter.Optional },
+                namespaces: new[] { "OnlineShop.Controllers" }
+            );
             routes.MapRoute(
                 name: "News",
                 url: "tin-tuc",

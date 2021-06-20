@@ -8,13 +8,14 @@
 
 <div class="content">
     <div class="content_top">
-        <div class="back-links">
-            <p><a href="/">Trang Chủ</a></p>/<p><a href="/san-pham/@category.MetaTitle-@category.ID">@category.Name</a></p>
+        <div class="back-links" style="font-size:2rem;display:flex">
+            <p><a href="/">Trang Chủ</a></p>/
+            <p><a href="/san-pham/@category.MetaTitle-@category.ID">@category.Name</a></p>
         </div>
         <div class="clear"></div>
     </div>
     <div class="section group">
-        <div class="cont-desc span_1_of_2">
+        <div class="cont-desc span_1_of_2" style="width:73%;">
             <div class="product-details">
                 <div class="grid images_3_of_2">
                     <div id="container">
@@ -23,15 +24,6 @@
                                 <div class="slides_container">
                                             <a href="#" target="_blank"><img src="@Model.Image" alt=" "></a>
                                     </div>
-
-                                <ul class="pagination">
-
-                                    <li><a href="#1"><img src="images/thumbnailslide-2.jpg" alt=" "></a></li>
-                                    <li><a href="#2"><img src="images/thumbnailslide-3.jpg" alt=" "></a></li>
-                                    <li><a href="#3"><img src="images/thumbnailslide-4.jpg" alt=" "></a></li>
-                                    <li><a href="#4"><img src="images/thumbnailslide-5.jpg" alt=" "></a></li>
-                                    <li><a href="#5"><img src="images/thumbnailslide-6.jpg" alt=" "></a></li>
-                                </ul>
                             </div>
                         </div>
                     </div>
@@ -41,13 +33,18 @@
                     <p>@Model.Description</p>
                     <div class="price">
                         <p>Giá: <span>@(Model.Price.HasValue? Model.Price.Value.ToString("N0"): "Liên Hệ")</span></p>
+                        <span>@(Model.Status? "Còn hàng":"Hết hàng")</span>
                     </div>
                     <div class="share-desc">
-                        <p>Chia sẻ :</p>
-                        <ul><li><a href="#"></a></li></ul>
-                        <ul><li><a href="#"></a></li></ul>
-                        <div class="button">
-                            <span><a style="text-decoration" href="/them-gio-hang?productId=@Model.ID&quantity=1">Thêm vào giỏ hàng</a></span>
+                        <ul class="list-share"style="display:flex">
+                            <li><p>Chia sẻ :</p></li>
+                            <li><a href="#"><i class="fab fa-facebook-f" style="margin-right:20px;"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter" style="margin-right:20px;"></i></a></li>
+                            <li><a href="#"><i class="fab fa-youtube" style="margin-right:20px;"></i></a></li>
+                            <li><a href="#"><i class="fab fa-discord"></i></a></li>
+                        </ul>
+                        <div class="add-cart">
+                            <h4><a href="/them-gio-hang?productId=@Model.ID&quantity=1">Thêm vào giỏ hàng</a></h4>
                         </div>
                         <div class="clear"></div>
                     </div>
@@ -95,7 +92,7 @@
                 @foreach (var item in relatedProducts)
                 {
                     var url = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
-                    <div class="grid_1_of_4 images_1_of_4">
+                    <div class="grid_1_of_4 images_1_of_4" style="margin-left: 15px; width: 22.8%;">
                         <a href="@url"><img src="@item.Image" alt=""></a>
                         <div class="price" style="border:none">
                             <div class="product-body">

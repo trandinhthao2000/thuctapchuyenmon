@@ -9,14 +9,17 @@ namespace Model.EF
     [Table("OrderDetail")]
     public partial class OrderDetail
     {
-        public long ID { get; set; }
         //[Key]
         //[Column(Order = 0)]
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]   
-        public long ProductID { get; set; }
+        public long ID { get; set; }
 
         //[Key]
         //[Column(Order = 1)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public long ProductID { get; set; }
+
+        //[Key]
+        //[Column(Order = 2)]
         //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long OrderID { get; set; }
 

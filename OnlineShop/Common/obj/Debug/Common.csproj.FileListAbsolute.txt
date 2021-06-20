@@ -1,6 +1,12 @@
 D:\OnlineShop\Common\bin\Debug\Common.dll
 D:\OnlineShop\Common\bin\Debug\Common.pdb
-D:\OnlineShop\Common\obj\Debug\Common.csproj.AssemblyReference.cache
 D:\OnlineShop\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 D:\OnlineShop\Common\obj\Debug\Common.dll
 D:\OnlineShop\Common\obj\Debug\Common.pdb
+D:\OnlineShop\Common\bin\Debug\EPPlus.dll
+D:\OnlineShop\Common\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+D:\OnlineShop\Common\bin\Debug\System.ComponentModel.Annotations.dll
+D:\OnlineShop\Common\bin\Debug\EPPlus.xml
+D:\OnlineShop\Common\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+D:\OnlineShop\Common\obj\Debug\Common.csproj.AssemblyReference.cache
+D:\OnlineShop\Common\obj\Debug\Common.csproj.CopyComplete

@@ -75,5 +75,12 @@ namespace Model.Dao
             }
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
+        public bool ChangeStatus(long id)
+        {
+            var productcategory = db.ProductCategories.Find(id);
+            productcategory.Status = !productcategory.Status;
+            db.SaveChanges();
+            return productcategory.Status;
+        }
     }
 }

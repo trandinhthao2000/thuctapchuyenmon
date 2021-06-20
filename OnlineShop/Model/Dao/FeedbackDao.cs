@@ -74,10 +74,26 @@ namespace Model.Dao
             db.SaveChanges();
             return feedback.Status;
         }
+
         public int countfeedback()
         {
             var count = (from a in db.Feedbacks where a.Status == false select a).Count();
             return count;
+        }
+        public bool Reply(Feedback entity)
+        {
+            try
+            {
+                var feedback = db.Feedbacks.Find(entity.ID);
+                feedback.Reply = entity.Reply;
+                feedback.Status = true;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 

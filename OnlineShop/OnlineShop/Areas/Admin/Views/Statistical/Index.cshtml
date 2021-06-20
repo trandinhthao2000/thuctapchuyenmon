@@ -1,34 +1,58 @@
-﻿@model List<Model.ViewModel.StatisticalModel>
+﻿@model List<Model.ViewModel.ThongkeModel>
 @{
-    ViewBag.Title = "Thống kê";
+    ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
-    var listSta = (List<Model.ViewModel.StatisticalModel>)ViewBag.listSta;
+    var list = (List<Model.ViewModel.ThongkeModel>)(ViewBag.listthongke);
 }
+
 @section header{
     Thống kê
 }
 @section jsFooter{
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Thời gian');
+            data.addColumn('number', 'Doanh thu');
+            data.addColumn('number', 'Lợi nhuận');
+            data.addRows([
+                ['4-2021', @ViewBag.revenue4, @ViewBag.benefit4],
+                ['5-2021', @ViewBag.revenue5, @ViewBag.benefit5],
+                ['6-2021', @ViewBag.revenue6, @ViewBag.benefit6]
+            ]);
+            var options = {
+                title: 'Biểu đồ thống kê',
+                curveType: 'function',
+                legend: { position: 'bottom' }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+        }
+    </script>
 
 }
-
 <div class="row">
     <div class="col-lg-12">
         <div class="card shadow mb-4">
             <div class="card-body">
                 @using (Html.BeginForm("Index", "Statistical", FormMethod.Get))
                 {
-                    <div class="row form-group">
-                        <div class="col-lg-12">
-                            <div class="col-md-12">
-                                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                    <input type="text" value="@ViewBag.SearchString" placeholder="Nhập từ khóa" name="searchString" />
-                                    <a href="/Admin/Statistical/Export/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                                        <i class="fas fa-download fa-sm text-white-50"></i> Xuất excel
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>}
+    <div class="row form-group">
+        <div class="col-lg-12">
+            <div class="col-md-12">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <input type="text" value="@ViewBag.SearchString" placeholder="Nhập từ khóa" name="searchString" />
+                    <a href="/Admin/Statistical/Export/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                        <i class="fas fa-download fa-sm text-white-50"></i> Xuất excel
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>}
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
@@ -39,16 +63,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in listSta)
+                            @foreach (var item in list)
                             {
                                 if (@item.status)
                                 {
-                                    <tr id="row_@item.date">
-                                        <td>@item.date.Value.Month - @item.date.Value.Year</td>
-                                        <td>@item.revenue.GetValueOrDefault(0).ToString("N0") </td>
-                                        <td>@item.benefit.GetValueOrDefault(0).ToString("N0")</td>
-                                    </tr>
-                                }
+                <tr id="row_@item.dateTime">
+                    <td>@item.dateTime.Value.Month - @item.dateTime.Value.Year</td>
+                    <td>@item.doanhthu.GetValueOrDefault(0).ToString("N0") </td>
+                    <td>@item.loinhuan.GetValueOrDefault(0).ToString("N0")</td>
+                </tr>}
                             }
                         </tbody>
                     </table>

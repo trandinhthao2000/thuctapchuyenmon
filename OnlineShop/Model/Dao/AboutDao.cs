@@ -79,7 +79,7 @@ namespace Model.Dao
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 return false;
             }

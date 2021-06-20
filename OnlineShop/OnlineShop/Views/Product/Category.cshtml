@@ -28,7 +28,7 @@
         @foreach (var item in Model)
         {
             var url = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
-            <div class="grid_1_of_4 images_1_of_4">
+            <div class="grid_1_of_4 images_1_of_4" style="width: 22.8%;">
                 <a href="@url"><img style="width:100%" src="@item.Image" alt="@item.Name"></a>
                 <h2>@item.Name </h2>
                 <div class="price-details">

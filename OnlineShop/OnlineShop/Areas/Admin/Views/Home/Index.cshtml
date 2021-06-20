@@ -2,9 +2,127 @@
 @{
     ViewBag.Title = "Trang Chủ";
     Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+    var listthongke = (List<Model.ViewModel.ThongkeModel>)ViewBag.listthongke;
 }
 
 @section header{
     Trang chủ
 }
+@section jsFooter{
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Thời gian');
+            data.addColumn('number', 'Doanh thu');
+            data.addColumn('number', 'Lợi nhuận');
+            data.addRows([
+                ['4-2021', @ViewBag.doanhthu4, @ViewBag.loinhuan4],
+                ['5-2021', @ViewBag.doanhthu5, @ViewBag.loinhuan5],
+                ['6-2021', @ViewBag.doanhthu6, @ViewBag.loinhuan6]
+            ]);
+            var options = {
+                title: 'Biểu đồ thống kê',
+                curveType: 'function',
+                legend: { position: 'bottom' }
+            };
 
+            var chart = new google.visualization.LineChart(document.getElementById('chart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Tổng doanh thu
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@(ViewBag.countdoanhthu.ToString("N0"))</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Tổng lợi nhuận
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@(ViewBag.countloinhuan.ToString("N0"))</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                <a href="/Admin/Order/Index/">Đơn hàng chưa hoàn thành</a>
+                            </div>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">@ViewBag.counttask</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                <a href="/Admin/Feedback/Index/">Chưa phản hồi</a>
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.countfeedback</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-12 col-lg-12">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <div class="chart-area">
+                        <div id="chart" style="width: 2000px; height: 340px"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

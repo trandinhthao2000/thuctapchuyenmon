@@ -12,6 +12,7 @@
         public long ID { get; set; }
 
         [StringLength(250)]
+        [Display(Name = "Tên thương hiệu")]
         public string Name { get; set; }
 
         [StringLength(250)]

@@ -1,4 +1,4 @@
-﻿@model List<Model.ViewModel.StatisticalModel>
+﻿@model List<Model.ViewModel.ThongkeModel>
 @{
     ViewBag.Title = "Search";
     Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
@@ -9,7 +9,6 @@
 @section jsFooter{
 
 }
-
 <div class="row">
     <div class="col-lg-12">
         <div class="card shadow mb-4">
@@ -40,12 +39,12 @@
                                 {
                                     if (@item.status)
                                     {
-                                        <tr id="row_@item.date">
-                                            <td>@item.date.Value.Month - @item.date.Value.Year</td>
-                                            <td>@item.revenue.GetValueOrDefault(0).ToString("N0") </td>
-                                            <td>@item.benefit.GetValueOrDefault(0).ToString("N0")</td>
+                                        <tr id="row_@item.dateTime">
+                                            <td>@item.dateTime.Value.Month - @item.dateTime.Value.Year</td>
+                                            <td>@item.doanhthu.GetValueOrDefault(0).ToString("N0") </td>
+                                            <td>@item.loinhuan.GetValueOrDefault(0).ToString("N0")</td>
                                         </tr>
-}
+                                    }
                                 }
                             }
                         </tbody>

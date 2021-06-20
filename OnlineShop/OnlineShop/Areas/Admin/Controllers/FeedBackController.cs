@@ -1,4 +1,5 @@
-﻿using Model.Dao;
+﻿using Common;
+using Model.Dao;
 using Model.EF;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                 if (id > 0)
                 {
                     SetAlert("Thêm thành công", "success");
-                    return RedirectToAction("Index", "Slide");
+                    return RedirectToAction("Index", "Feedback");
                 }
                 else
                 {
@@ -59,5 +60,28 @@ namespace OnlineShop.Areas.Admin.Controllers
                 status = result
             });
         }
+        public ActionResult Reply(int id)
+        {
+            var feedback = new FeedbackDao().ViewDetail(id);
+            return View(feedback);
+        }
+        [HttpPost]
+        public ActionResult Reply(Feedback feedback, string name, string reply, string email)
+        {
+            if (ModelState.IsValid)
+            {
+                feedback.Name = name;
+                feedback.Reply = reply;
+                feedback.Email = email;
+                var rep = new FeedbackDao().Reply(feedback);
+                string content = System.IO.File.ReadAllText(Server.MapPath("~/Assets/client/template/reply.html"));
+                content = content.Replace("{{CustomerName}}", name);
+                content = content.Replace("{{Reply}}", reply);
+                new MailHelper().SendMail(email, "Phản hồi từ cửa hàng", content);
+            }
+            return View("Reply");
+        }
+
+
     }
 }

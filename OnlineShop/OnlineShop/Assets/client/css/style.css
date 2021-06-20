@@ -5,10 +5,12 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 */
  /* reset */
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
-article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure, header, hgroup, menu, nav, section {display: block;}
 ol,ul{list-style:none;margin:0;padding:0;}
-blockquote,q{quotes:none;}
+blockquote, q {
+	quotes: none;
+}
 blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
 table{border-collapse:collapse;border-spacing:0;}
 /* start editing from here */
@@ -333,9 +335,7 @@ body {
 	-moz-box-shadow: 0px 0px 3px rgb(150, 150, 150);
 	-o-box-shadow: 0px 0px 3px rgb(150, 150, 150);
 }
-.grid_1_of_4:first-child {
-	margin-left: 0;
-}
+
 .images_1_of_4 {
 	width: 20.8%;
 	padding: 1.5%;
@@ -397,12 +397,8 @@ body {
 	  background:#292929;
 }
 /*** Footer ***/
-.footer {
-	position: relative;
-	background: #FCFCFC;
-    border-top: 1px solid #CECECE;
-    margin:20px auto;
-}
+
+
 .section {
 	clear: both;
 	padding: 0px;
@@ -1921,10 +1917,13 @@ body {
 		width: 80px;
 	}
 }
-.newsletter {
+
+.
+{
 	padding-top: 77px;
 	padding-bottom: 67px;
 }
+
 .row {
 	display: flex;
 	-ms-flex-wrap: wrap;
@@ -1936,6 +1935,7 @@ body {
 .section_title h1 {
 	font-size: 60px;
 }
+
 .newsletter_text {
 	margin-top: -12px;
 	padding-left: 2px;
@@ -1950,14 +1950,15 @@ body {
 .newsletter_form {
 	display: block;
 	position: relative;
+	margin-top:30px;
 	width: 100%;
 }
 
 .newsletter_input {
-	margin-top:20px;
 	width: calc(100% - 215px);
 	height: 56px;
 	border-radius: 22px;
+	margin-top:30px;
 	border: solid 2px #e0e7ee;
 	padding-left: 34px;
 	outline: none;
@@ -1965,31 +1966,32 @@ body {
 	font-weight: 600;
 	color: #000000;
 }
+
 .button {
 	position: relative;
 	overflow: hidden;
 	width: 200px;
 	height: 56px;
-	border-radius: 20px;
 	border: none;
 	outline: none;
 	cursor: pointer;
 	text-align: center;
 }
+
 .newsletter_button {
 	width: 208px;
 	height: 56px;
-	border-radius: 20px;
+	border-radius: 22px;
+	margin-top:6%;
 	cursor: pointer;
 }
 
 .newsletter_button span {
-	display:flex;
-	justify-content:center;
 	position: relative;
 	font-size: 14px;
 	font-weight: 700;
-	color: #ffffff;
+	color: red;
+	line-height: 56px;
 	text-transform: uppercase;
 	z-index: 1;
 }

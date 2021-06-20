@@ -9,17 +9,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href="~/Assets/client/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Assets/client/css/style.css" rel="stylesheet" />
     <link href="~/Assets/client/css/slider.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Assets/client/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Assets/client/css/bootstrap.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
     <script src="~/Assets/client/js/jquery-3.6.0.min.js"></script>
-    <script src="~/Assets/client/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script type="text/javascript" src="~/Assets/client/js/move-top.js"></script>
     <script type="text/javascript" src="~/Assets/client/js/easing.js"></script>
-    <script type="text/javascript" src="~/Assets/client/js/startstop-slider.js"></script>
+
+    <script src="~/Assets/client/js/startstop-slider.js"></script>
 </head>
 <body>
     <div class="wrap">
@@ -29,7 +30,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
             <div class="header_top">
                 <div class="logo">
-                    <a href="/" ref="nofollow"><img src="~/Assets/client/images/logo.png" alt="" /></a>
+                    <a href="/" ref="nofollow"><img src="~/Assets/client/images/logo1.png" width="60px" alt="" /></a>
                 </div>
                 @{ Html.RenderAction("HeaderCart", "Home");}
                 <script type="text/javascript">
@@ -94,11 +95,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                 <!-- Newsletter Form -->
                 <div class="col-xl-6 nl_col">
-                    <div class="newsletter_form_container d-flex flex-column align-items-start justify-content-end">
+                    <div class="newsletter_form_container d-flex flex-column align-items-start justify-content-end" style="margin-top:-20px;">
                         <form action="#" class="newsletter_form" id="newsletter_form">
                             <div class="d-flex flex-row align-items-start justify-content-between">
                                 <input type="email" class="newsletter_input" placeholder="Enter your email" required="required">
-                                <button class="button newsletter_button"><span>subscribe</span></button>
+                                <button class="newsletter_button" style="background: linear-gradient(to right bottom, #fc31a1, #dc55f5, #31b); "><span>subscribe</span></button>
                             </div>
                         </form>
                     </div>
@@ -107,9 +108,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
         </div>
     </div>
-    <div class="footer">
-        @{ Html.RenderAction("Footer", "Home"); }
-    </div>
+
+    @{ Html.RenderAction("Footer", "Home"); }
+
     @RenderSection("jsFooter", required: false);
 </body>
 </html>
