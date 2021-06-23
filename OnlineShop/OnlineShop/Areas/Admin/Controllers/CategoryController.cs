@@ -9,6 +9,7 @@ namespace OnlineShop.Areas.Admin.Controllers
     public class CategoryController : Controller
     {
         // GET: Admin/Category
+        [HasCredential(RoleID = "VIEW_USER")]
         public ActionResult Index()
         {
             return View();

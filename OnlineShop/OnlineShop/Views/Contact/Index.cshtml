@@ -3,44 +3,76 @@
     ViewBag.Title = "Liên Hệ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    #mapCanvas {
+        width: 100%;
+        height: 600px;
+    }
+</style>
 @section jsFooter {
     <script src="~/Assets/client/js/controller/contactController.js"></script>
+   
 }
 <div class="content">
     <h1>Liên hệ</h1>
     <div class="row">
-        <div class="col-md-12">
-            <div class="col-md-6">
-                <h2>Thông tin liên hệ</h2>
-                @Html.Raw(Model.Content)
-                <h2>Gửi thông tin</h2>
-                <form>
-                    <div class="form-group">
-                        <label>Họ Tên</label>
-                        <input tyle="text" id="txtName" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <label>Điện Thoại</label>
-                        <input tyle="text" id="txtMobile" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <label>Địa Chỉ</label>
-                        <input tyle="text" id="txtAddress" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input tyle="text" id="txtEmail" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <label>Yêu Cầu</label>
-                        <textarea id="txtContent" class="form-control">
+        <div class="col-md-6">
+            <h2>Thông tin liên hệ</h2>
+            @Html.Raw(Model.Content)
+            <h2>Gửi thông tin</h2>
+            <form>
+                <div class="form-group">
+                    <label>Họ Tên</label>
+                    <input tyle="text" id="txtName" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Điện Thoại</label>
+                    <input tyle="text" id="txtMobile" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Địa Chỉ</label>
+                    <input tyle="text" id="txtAddress" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input tyle="text" id="txtEmail" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Yêu Cầu</label>
+                    <textarea id="txtContent" class="form-control">
 
                         </textarea>
-                    </div>
-                    <button id="btnSend" class="btn btn-success">Gửi đi</button>
-                </form>
-            </div>
+                </div>
+                <button id="btnSend" class="btn btn-success">Gửi đi</button>
+            </form>
         </div>
+        <div class="col-md-6">
+            <h2>Bản đồ</h2>
+            <div id="mapCanvas"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.5619416639975!2d106.79273196533451!3d10.844797060892185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175273e19f4222f%3A0x387417820a1ad26c!2zNDUwIEzDqiBWxINuIFZp4buHdCwgVMSDbmcgTmjGoW4gUGjDuiBBLCBRdeG6rW4gOSwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1624284160356!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div>
+        </div>
+       
     </div>
 </div>
+@*<script>
+        function initMap() {
+            const uluru = { lat: -25.363, lng: 131.044 };
+            const map = new google.maps.Map(document.getElementById('mapCanvas'), {
+                zoom: 4,
+                center: uluru,
+            });
+            const contentString = "@Model.Content";
+            const infowindow = new google.maps.InfoWindow({
+                content: contentString,
+            });
+            const marker = new google.maps.Marker({
+                position: uluru,
+                map,
+                title: "Địa chỉ",
+            });
+            marker.addListener("click", () => {
+                infowindow.open(map, marker);
+            });
+        }
 
+</script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE&callback=initMap&libraries=geometry&v=weekly"></script>*@

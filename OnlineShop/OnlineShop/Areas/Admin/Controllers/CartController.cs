@@ -10,6 +10,7 @@ namespace OnlineShop.Areas.Admin.Controllers
     public class CartController : Controller
     {
         // GET: Admin/Cart
+        [HasCredential(RoleID = "VIEW_USER")]
         public ActionResult Index()
         {
             var dao = new OrderDao();

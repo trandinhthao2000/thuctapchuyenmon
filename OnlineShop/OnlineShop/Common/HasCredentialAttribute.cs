@@ -18,7 +18,7 @@ namespace OnlineShop
 
             List<string> privilegeLevels = this.GetCredentialByLoggedInUser(session.UserName);
 
-            if (privilegeLevels.Contains(this.RoleID) || session.GroupID == CommonConstants.ADMIN_GROUP)
+            if (privilegeLevels.Contains(this.RoleID) || session.GroupID == CommonConstants.ADMIN_GROUP || session.GroupID == CommonConstants.MOD_GROUP)
             {
                 return true;
             }

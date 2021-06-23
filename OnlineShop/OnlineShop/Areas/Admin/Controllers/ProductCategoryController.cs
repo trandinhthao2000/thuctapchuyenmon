@@ -11,13 +11,13 @@ namespace OnlineShop.Areas.Admin.Controllers
 {
     public class ProductCategoryController : BaseController
     {
+        [HasCredential(RoleID = "VIEW_USER")]
         public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
         {
             var dao = new ProductCategoryDao();
             var model = dao.ListAllPaging(searchString, page, pageSize);
 
             ViewBag.SearchString = searchString;
-
             return View(model);
         }
 

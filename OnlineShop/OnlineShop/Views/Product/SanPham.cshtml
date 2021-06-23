@@ -22,7 +22,7 @@
                 <a href="@url"><img src="@item.Image" width="390" alt="@item.Name"></a>
             </div>
             <div class="product-body">
-                <h3 class="product-name"><a href="#">@item.Name</a></h3>
+                <h3 style="font-size:1.3em;" class="product-name"><a href="#">@item.Name</a></h3>
                 <h4 class="product-price">@(item.Price.HasValue?item.Price.Value.ToString("N0"):"Liên hệ")</h4>
                 <h4>@(item.Status? "Còn hàng":"Hết hàng")</h4>
             </div>

@@ -72,7 +72,6 @@ namespace Model.Dao
         }
         public long Create(Content content)
         {
-            //xu li alias
             if (string.IsNullOrEmpty(content.MetaTitle))
             {
                 content.MetaTitle = StringHelper.ToUnsignString(content.Name);
@@ -81,7 +80,7 @@ namespace Model.Dao
             content.ViewCount = 0;
             db.Contents.Add(content);
             db.SaveChanges();
-            //xu li tag
+
             if (!string.IsNullOrEmpty(content.Tags))
             {
                 string[] tags = content.Tags.Split(',');
@@ -89,12 +88,11 @@ namespace Model.Dao
                 {
                     var tagId = StringHelper.ToUnsignString(tag);
                     var existedTag = this.CheckTag(tagId);
-                    // them vao tag
                     if (!existedTag)
                     {
                         this.InsertTag(tagId, tag);
                     }
-                    // them vao content tag
+
                     this.InsertContentTag(content.ID, tagId);
                 }
             }
@@ -102,14 +100,14 @@ namespace Model.Dao
         }
         public long Edit(Content content)
         {
-            //xu li alias
+
             if (string.IsNullOrEmpty(content.MetaTitle))
             {
                 content.MetaTitle = StringHelper.ToUnsignString(content.Name);
             }
             content.CreatedDate = DateTime.Now;
             db.SaveChanges();
-            //xu li tag
+
             if (!string.IsNullOrEmpty(content.Tags))
             {
                 this.removeAllContentTag(content.ID);
@@ -118,12 +116,12 @@ namespace Model.Dao
                 {
                     var tagId = StringHelper.ToUnsignString(tag);
                     var existedTag = this.CheckTag(tagId);
-                    // them vao tag
+
                     if (!existedTag)
                     {
                         this.InsertTag(tagId, tag);
                     }
-                    // them vao content tag
+
                     this.InsertContentTag(content.ID, tagId);
                 }
             }
@@ -183,11 +181,13 @@ namespace Model.Dao
                 content.Name = entity.Name;
                 content.MetaTitle = entity.MetaTitle;
                 content.Image = entity.Image;
-                content.MetaTitle = entity.MetaTitle;
                 content.Description = entity.Description;
                 content.CategoryID = entity.CategoryID;
+                content.Detail = entity.Detail;
                 content.ModifiedBy = entity.ModifiedBy;
                 content.ModifiedDate = DateTime.Now;
+                content.Status = entity.Status;
+                content.Tags = entity.Tags;
                 db.SaveChanges();
                 return true;
             }

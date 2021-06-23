@@ -36,6 +36,7 @@
                                 <th>Tiêu đề</th>
                                 <th>Hình ảnh</th>
                                 <th>Ngày đăng</th>
+                                <th>Chi tiết</th>
                                 <th>Trạng thái</th>
                                 <th>#</th>
                             </tr>
@@ -48,6 +49,7 @@
                                     <td>@item.Name</td>
                                     <td>@item.Image</td>
                                     <td>@item.CreatedDate</td>
+                                    <td>@item.Detail</td>
                                     <td><a href="#" class="btn-active" data-id="@item.ID">@(item.Status? "Kích hoạt":"Khóa")</a></td>
                                     <td>
                                         <a href="/Admin/Content/Edit/@item.ID">Sửa</a>

@@ -163,6 +163,7 @@ namespace OnlineShop.Controllers
                 user.DistrictID = int.Parse(model.DistrictID);
                 user.ProvinceID = int.Parse(model.ProvinceID);
                 user.Status = true;
+                user.ModifiedDate = DateTime.Now;
                 if (!string.IsNullOrEmpty(model.DistrictID))
                 {
                     user.DistrictID = int.Parse(model.DistrictID);

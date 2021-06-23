@@ -118,6 +118,7 @@ namespace Model.Dao
                 product.Description = entity.Description;
                 product.OriginalPrice = entity.OriginalPrice;
                 product.Price = entity.Price;
+                product.Detail = entity.Detail;
                 product.Quantity = entity.Quantity;
                 product.CategoryID = entity.CategoryID;
                 product.ModifiedBy = entity.ModifiedBy;

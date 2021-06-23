@@ -9,6 +9,7 @@ namespace OnlineShop.Areas.Admin.Controllers
 {
     public class HomeController : Controller
     {
+        [HasCredential(RoleID = "VIEW_USER")]
         // GET: Admin/Home
         public ActionResult Index()
         {
@@ -20,7 +21,7 @@ namespace OnlineShop.Areas.Admin.Controllers
             ViewBag.doanhthu4 = new StatisticalDao().doanhthu4();
             ViewBag.loinhuan4 = new StatisticalDao().loinhuan4();
             ViewBag.doanhthu5 = new StatisticalDao().doanhthu5();
-            ViewBag.loinhuan5 = new StatisticalDao().loinhuan5 ();
+            ViewBag.loinhuan5 = new StatisticalDao().loinhuan5();
             ViewBag.doanhthu6 = new StatisticalDao().doanhthu6();
             ViewBag.loinhuan6 = new StatisticalDao().loinhuan6();
             ViewBag.listthongke = new StatisticalDao().listthongke();

@@ -426,7 +426,7 @@ namespace Model.Dao
                 worksheet.Cells[i + 2, 1].Value = item.dateTime.Value.Month + "-" + item.dateTime.Value.Year;
                 worksheet.Cells[i + 2, 2].Value = item.doanhthu;
                 worksheet.Cells[i + 2, 3].Value = item.loinhuan;
-                if (item.loinhuan > 10000000)
+                if (item.loinhuan > 25000000)
                 {
                     using (var range = worksheet.Cells[i + 2, 1, i + 2, 4])
                     {
