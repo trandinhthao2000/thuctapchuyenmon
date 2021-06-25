@@ -90,6 +90,7 @@
     <Compile Include="EF\ContentTag.cs" />
     <Compile Include="EF\Credential.cs" />
     <Compile Include="EF\Customer.cs" />
+    <Compile Include="EF\Ad.cs" />
     <Compile Include="EF\Feedback.cs" />
     <Compile Include="EF\Footer.cs" />
     <Compile Include="EF\Menu.cs" />

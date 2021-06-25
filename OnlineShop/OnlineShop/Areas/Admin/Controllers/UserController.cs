@@ -45,7 +45,7 @@ namespace OnlineShop.Areas.Admin.Controllers
 
                 if (id > 0)
                 {
-                    SetAlert("Thêm người dùng thành công","success");
+                    SetAlert("Thêm người dùng thành công", "success");
                     return RedirectToAction("Index", "User");
                 }
                 else

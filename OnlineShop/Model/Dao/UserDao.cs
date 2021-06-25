@@ -32,12 +32,14 @@ namespace Model.Dao
             try
             {
                 var user = db.Users.Find(entity.ID);
-                user.Name = entity.UserName;
+                
                 if (!string.IsNullOrEmpty(entity.Password))
                 {
                     user.Password = entity.Password;
                 }
                 user.GroupID = entity.GroupID;
+                user.UserName = entity.UserName;
+                user.Name = entity.Name;
                 user.Address = entity.Address;
                 user.Email = entity.Email;
                 user.Phone = entity.Phone;
@@ -76,7 +78,7 @@ namespace Model.Dao
             {
                 if (isLoginAdmin == true)
                 {
-                    if (result.GroupID == CommonConstants.ADMIN_GROUP || result.GroupID == CommonConstants.MOD_GROUP || result.GroupID == CommonConstants.MEMBER_GROUP) 
+                    if (result.GroupID == CommonConstants.ADMIN_GROUP || result.GroupID == CommonConstants.MOD_GROUP || result.GroupID == CommonConstants.MEMBER_GROUP)
                     {
                         if (result.Status == false)
                         {
@@ -111,6 +113,9 @@ namespace Model.Dao
                 }
             }
         }
+
+        
+
         public bool ChangeStatus(long id)
         {
             var user = db.Users.Find(id);
@@ -178,5 +183,24 @@ namespace Model.Dao
 
         }
 
+
+        public bool ForgotPass(User entity)
+        {
+            try
+            {
+                var user = db.Users.Find(entity.ID);
+                if (!string.IsNullOrEmpty(entity.Password))
+                {
+                    user.Password = entity.Password;
+                }
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                string s = e.Message.ToString() + "";
+                return false;
+            }
+        }
     }
 }

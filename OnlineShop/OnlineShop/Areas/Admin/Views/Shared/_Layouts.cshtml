@@ -46,7 +46,8 @@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
+                        @{ var session = (UserLogin)Session[OnlineShop.Common.CommonConstants.USER_SESSION]; }
+                        <li>Xin chào: @session.UserName</li>
                         <li>|</li>
                         <li>@Html.ActionLink("Đăng xuất", "Logout", "User")</li>
                     </ul>

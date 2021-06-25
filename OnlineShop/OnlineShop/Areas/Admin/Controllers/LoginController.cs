@@ -66,9 +66,23 @@ namespace OnlineShop.Areas.Admin.Controllers
         public ActionResult ChangePassword()
         {
             User user = (User)Session["changepass"];
-            return View(user);
+            var us = new UserDao().ViewDetail((int)user.ID);
+            return View();
         }
-
+        [HttpPost]
+        public ActionResult ChangePassword(User user)
+        {
+            User user1 = (User)Session["changepass"];
+            user.ID = user1.ID;
+            var dao = new UserDao();
+            if (!string.IsNullOrEmpty(user.Password))
+            {
+                var encryptedMd5Pas = Encryptor.MD5Hash(user.Password);
+                user.Password = encryptedMd5Pas;
+            }
+            var result = dao.ForgotPass(user);
+            return View("Index");
+        }
         [HttpGet]
         public ActionResult ForgotPassword()
         {
@@ -78,13 +92,38 @@ namespace OnlineShop.Areas.Admin.Controllers
             ViewBag.Message = "";
             return View(login);
         }
+        [HttpPost]
+        public ActionResult ForgotPassword(LoginModel model)
+        {
+            var dao = new UserDao();
+            if (model.Email != null)
+            {
+                if (new OnlineShopDbContext().Users.SingleOrDefault(x => x.Email.Equals(model.Email)) != null)
+                {
+                    Session["changepass"] = new OnlineShopDbContext().Users.SingleOrDefault(x => x.Email.Equals(model.Email));
+                    new MailHelper().SendMail(model.Email, "Xác nhận mật khẩu", "Nhấn vào dường dẫn để đổi mật khẩu <a href = https://localhost:44349/Admin/Login/ChangePassword >Xác Nhận</a> ");
+                    ViewBag.Message = "Vui lòng kiểm tra mail của bạn";
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Mail bạn nhập không tồn tại!!");
+                    ViewBag.Message = "";
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Vui lòng nhập email!!");
+                ViewBag.Message = "";
+            }
 
+            return View();
+        }
         public class MailHelper
         {
             public void SendMail(string toEmailAddress, string subject, string content)
             {
                 var fromEmailAddress = ConfigurationManager.AppSettings["FromEmailAddress"].ToString();
-                var fromEmailDisplayName = ConfigurationManager.AppSettings["FromEmailDisplayName1"].ToString();
+                var fromEmailDisplayName = ConfigurationManager.AppSettings["FromEmailDisplayNameXacNhanTaiKhoan"].ToString();
                 var fromEmailPassword = ConfigurationManager.AppSettings["FromEmailPassword"].ToString();
                 var smtpHost = ConfigurationManager.AppSettings["SMTPHost"].ToString();
                 var smtpPort = ConfigurationManager.AppSettings["SMTPPort"].ToString();
